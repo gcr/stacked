@@ -13,8 +13,8 @@ class PygameMasterView:
         self.resolution = (800,600)
         self.window = pygame.display.set_mode(self.resolution)
         pygame.display.set_caption("Stacked")
-        self.window.fill((255,255,255))
         # Load a pretty picture
+        self.window.fill((255,255,255))
         loading_pic = pygame.image.load("img/UI/loading.png")
         loading_pic_rect = loading_pic.get_rect()
         loading_pic_rect.center = (self.resolution[0]/2,
@@ -25,9 +25,19 @@ class PygameMasterView:
         
         # Step 2.
         self.ev = eventManager
-        self.ev.register_listener(EventList.Tick, self)
+        self.ev.register_listener(EventList.DisplayUpdate, self)
+        self.ev.register_listener(EventList.NewGame, self)
         
+        # Step 3.
+        # These "views" are different states the display can be in the game.
+        # When we switch views through events, all the layers get cleared
+        # and rebuilt. When we get a EventList.DisplayUpdate event, we'll loop
+        # through each of the layers and call its update() function, then blit
+        # all their surface rects together.
+        self.layers = []
+        self.views = {'main_menu': [],
+            'game': [],
+            'options': []}
         
     def notify(self, event):
-        pygame.display.flip()
-        
+        pass

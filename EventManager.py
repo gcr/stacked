@@ -15,9 +15,12 @@ class EventManager:
 
     def post(self, event):
         """ Posts a new event to every object """
-        self.events.setdefault(event.TYPE, [])
-        for ref in self.events[event.TYPE]:
+        # Set a default object list if this is a new kind of event
+        objects = self.events.setdefault(event.TYPE, [])
+        # Send to every object
+        for ref in objects:
             if ref() is None:
-                self.events[event.TYPE].remove(ref)
+                # Object doesn't exist anymore, remove it
+                objects.remove(ref)
             else:
                 ref().notify(event)

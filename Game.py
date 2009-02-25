@@ -10,3 +10,6 @@ class Game:
         
         # Listen for new game events
         self.ev.register_listener(EventList.NewGame, self)
+        
+    def notify(self, event):
+        pass

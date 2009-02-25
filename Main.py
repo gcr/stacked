@@ -6,7 +6,7 @@ from Game import Game
 
 def main():
     ev = EventManager() # Keep track of it all
-    timer = TimeKeepers.FPSDebugController(ev) # Time it all
+    timer = TimeKeepers.DisplayTimeController(ev) # Time it all
     game = Game(ev) # Control it all
     pyview = PygameMasterView(ev) # Draw it all
     
