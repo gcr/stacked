@@ -5,3 +5,9 @@ class Event:
 class Tick(Event):
     """ Fires every frame of the clock """
     TYPE = 1
+
+class NewGame(Event):
+    """ When a new game is started """
+    TYPE = 2
+    def __init__(self, map):
+        self.map = map
