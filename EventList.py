@@ -15,3 +15,7 @@ class NewGame(Event):
     TYPE = 3
     def __init__(self, map):
         self.map = map
+
+if __name__ == '__main__':
+    print("that was unexpected")
+    
