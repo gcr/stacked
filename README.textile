@@ -26,8 +26,8 @@ Here's the list I have so far. Feel free to comment.
 |Earth|Fire|Water|Poison? Saps enemies' health for a spell?|
 |Earth|Ice|&nbsp; |Makes icicles that sprout from the ground and form spikes|
 |Earth|Ice|Water|Starts out as a water gun, but the projectiles slow down and turn into deadly spikes that hang in the air|
-|Earth|Ice|Fire|???|
+|Earth|Ice|Fire|{background:#eaeaea}. ???|
 |Earth|Zapper|&nbsp; |Summon swarm of lightning bugs|
-|Earth|Zapper|Water|???|
+|Earth|Zapper|Water|{background:#eaeaea}. ???|
 |Earth|Zapper|Fire|FIRE DRILL! No seriously. A drill made out of fire. Meelee.|
 |Earth|Zapper|Ice|Blizard gun. Snow fills the screen, blows opponnents arround.|
