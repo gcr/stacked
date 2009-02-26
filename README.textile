@@ -1,6 +1,10 @@
 h1. Stacked
 
-|_. Weapons|_. &nbsp; |_. &nbsp; |_. Effect|
+??Stacked?? will be an experimental platform game once I get around to completing it. It'll be a lot like your average ??Metroid??' or ??Vectorman??, but the thing that'll set it out will be the ability to combine two or more powerups.
+
+Here's the list I have so far. Feel free to comment.
+
+|_. Combinations|_. &nbsp; |_. &nbsp; |_. Effect|
 |Nothing|&nbsp; |&nbsp; |boring ol' "Pew Pew Pew" pistol|
 |Water|&nbsp; |&nbsp; |Just a water cannon, bullets affected by gravity.|
 |Fire|&nbsp; |&nbsp; |Light flamethrower|
@@ -15,7 +19,7 @@ h1. Stacked
 |Zapper|Fire|Water|Fireworks - single charged projectile, does lots of splash damage|
 |Zapper|Ice|&nbsp; |High yield explosive (low damage)- throws your opponents far away|
 |Zapper|Ice|Water|Giant fridge falls out of the sky and crushes opponents.|
-|Zapper|Ice|Fire|High yield explosive, catches players on fire until they touch the ground|
+|Zapper|Ice|Fire|Projectile smashes against the wall and shatters, but the fragments shock everything they touch! (Thanks, "Amanda":http://the-art-of-observation.blogspot.com/!)|
 |Earth|&nbsp; |&nbsp; |Throws rocks, affected by gravity, rocks bounce once.|
 |Earth|Water|&nbsp; |Mud gun. Slows down opponents. Good for teamwork.|
 |Earth|Fire|&nbsp; |A plant or something on fire. Bullet rolls on the ground for a bit and burns anything it touches.|
