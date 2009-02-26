@@ -13,15 +13,9 @@ class PygameMasterView:
         self.resolution = (800,600)
         self.window = pygame.display.set_mode(self.resolution)
         pygame.display.set_caption("Stacked")
+        
         # Load a pretty picture
-        self.window.fill((255,255,255))
-        loading_pic = pygame.image.load("img/UI/loading.png")
-        loading_pic_rect = loading_pic.get_rect()
-        loading_pic_rect.center = (self.resolution[0]/2,
-                                   self.resolution[1]/2)
-        # And draw it to the screen
-        self.window.blit(loading_pic, loading_pic_rect)
-        pygame.display.update()
+        self.draw_loading_screen()
         
         # Step 2.
         self.ev = eventManager
@@ -38,6 +32,20 @@ class PygameMasterView:
         self.views = {'main_menu': [],
             'game': [],
             'options': []}
+        
+    def draw_loading_screen(self):
+        """
+            Draws a nifty loading page to the screen
+        """
+        
+        self.window.fill((0,0,0))
+        loading_pic = pygame.image.load("img/UI/loading.png")
+        loading_pic_rect = loading_pic.get_rect()
+        loading_pic_rect.center = (self.resolution[0]/2,
+                                   self.resolution[1]/2)
+        # And draw it to the screen
+        self.window.blit(loading_pic, loading_pic_rect)
+        pygame.display.update()
         
     def notify(self, event):
         pass

@@ -31,13 +31,13 @@
   </defs>
   <sodipodi:namedview
      id="base"
-     pagecolor="#ffffff"
+     pagecolor="#000000"
      bordercolor="#666666"
      borderopacity="1.0"
      gridtolerance="10000"
      guidetolerance="10"
      objecttolerance="10"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
      inkscape:cx="102.96781"
@@ -74,11 +74,11 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="opacity:0.26332288;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
+       style="opacity:0.26332287999999998;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
        d="M 128 0 C 57.344 1.4210855e-14 -2.5840441e-17 57.344 0 128 C 0 198.656 57.344 256 128 256 C 198.656 256 256 198.656 256 128 C 256 57.344 198.656 -2.844755e-14 128 0 z M 128 23.34375 C 185.77233 23.343749 232.65625 70.227669 232.65625 128 C 232.65625 185.77233 185.77233 232.65625 128 232.65625 C 70.227665 232.65625 23.34375 185.77233 23.34375 128 C 23.343749 70.227665 70.227669 23.34375 128 23.34375 z "
        id="path3169" />
     <path
-       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:0.26332288"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;opacity:0.26332287999999998"
        d="M 176.49721,45.146985 L 124.40709,119.2998 L 62.814727,108.59681 L 131.59133,138.27174 L 176.49721,45.146985 z"
        id="path3178"
        sodipodi:nodetypes="ccccc"
