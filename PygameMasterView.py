@@ -1,5 +1,6 @@
 import pygame
 import EventList
+import sys
 
 class PygameMasterView:
     def __init__(self, eventManager):
@@ -19,8 +20,10 @@ class PygameMasterView:
         
         # Step 2.
         self.ev = eventManager
-        self.ev.register_listener(EventList.DisplayUpdate, self)
-        self.ev.register_listener(EventList.NewGame, self)
+        for e in [EventList.DisplayUpdate,
+                        EventList.NewGame,
+                        EventList.Quit]:
+            self.ev.register_listener(e, self)
         
         # Step 3.
         # These "views" are different states the display can be in the game.
@@ -48,4 +51,8 @@ class PygameMasterView:
         pygame.display.update()
         
     def notify(self, event):
-        pass
+        if isinstance(event, EventList.Quit):
+            pygame.quit()
+            sys.exit()
+    
+    
