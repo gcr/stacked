@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
+
 import pygame
-import EventList
+import ..EventList
 import sys
 
 class PygameMasterView:

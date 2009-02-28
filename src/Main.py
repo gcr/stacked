@@ -1,10 +1,14 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
+
 import time
 from EventManager import EventManager
-from PygameMasterView import PygameMasterView
-from PygameMasterController import PygameMasterController
+from Views.PygameMasterView import PygameMasterView
+from Views.PygameMasterController import PygameMasterController
 
-import TimeKeepers
-from Game import Game
+import Controllers.TimeKeepers
+from Models.Game import Game
 
 def main():
     ev = EventManager() # Keep track of it all

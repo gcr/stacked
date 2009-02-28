@@ -1,5 +1,9 @@
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
+
+
 import pygame
-import EventList
+import ..EventList
 
 class DisplayTimeController:
     """ Fires off a tick event every frame and then a display update event
