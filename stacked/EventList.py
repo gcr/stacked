@@ -7,8 +7,10 @@ class Event:
     TYPE = 0 #note that this MUST be unique!
 
 class Tick(Event):
-    """ Fires every frame of the clock. Usually, a TimeController or sommat like
-    that will fire this. """
+    """ 
+        Fires every frame of the clock. Usually, a TimeController
+        or sommat like that will fire this.
+    """
     TYPE = 1
     
 class DisplayUpdate(Event):
@@ -16,15 +18,20 @@ class DisplayUpdate(Event):
     TYPE = 2
     
 class ChangeScreenRequest(Event):
-    """ When the user wants to switch which 'mode' we're in, PygameMasterView
-    and such will switch the sprite groups they choose to draw. """
+    """ 
+        When the user wants to switch which 'mode' we're
+        in, PygameMasterView and friends will switch the sprite
+        groups they choose to draw.
+    """
     TYPE = 3
     def __init__(self, screen):
         self.screen = screen
         
 class NewGame(Event):
-    """ When a new game is started, Game and the like will jump into action and
-    load a new map. """
+    """
+        When a new game is started, Game and the like will
+        jump into action and load a new map.
+    """
     TYPE = 4
     def __init__(self, map):
         self.map = map

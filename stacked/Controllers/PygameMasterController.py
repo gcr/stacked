@@ -2,6 +2,7 @@
 #-*- coding:utf-8 -*-
 
 from stacked import EventList
+from stacked import ResourceManager
 import pygame
 
 class PygameMasterController:
