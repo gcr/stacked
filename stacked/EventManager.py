@@ -3,7 +3,7 @@
 
 
 import weakref
-import EventList
+from stacked import EventList
 
 class EventManager:
     """ This class handles most of the communication between the various parts

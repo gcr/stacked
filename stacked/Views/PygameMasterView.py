@@ -3,7 +3,7 @@
 
 
 import pygame
-import ..EventList
+from stacked import EventList
 import sys
 
 class PygameMasterView:

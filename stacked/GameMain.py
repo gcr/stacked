@@ -3,14 +3,14 @@
 
 
 import time
-from EventManager import EventManager
-from Views.PygameMasterView import PygameMasterView
-from Views.PygameMasterController import PygameMasterController
+from stacked.EventManager import EventManager
+from stacked.Views.PygameMasterView import PygameMasterView
+from stacked.Controllers.PygameMasterController import PygameMasterController
 
-import Controllers.TimeKeepers
-from Models.Game import Game
+from stacked.Controllers import TimeKeepers
+from stacked.Models.Game import Game
 
-def main():
+def run():
     ev = EventManager() # Keep track of it all
     timer = TimeKeepers.DisplayTimeController(ev) # Time it all
     game = Game(ev) # Control it all
@@ -21,5 +21,5 @@ def main():
         timer.tick()
     
 if __name__ == "__main__":
-    main()
+    print("You should go to the previous directory and run python Kickstart.py")
     

@@ -3,7 +3,7 @@
 
 
 import pygame
-import ..EventList
+from stacked import EventList
 
 class DisplayTimeController:
     """ Fires off a tick event every frame and then a display update event

@@ -3,7 +3,7 @@
 
 
 import pygame
-import ..EventList
+from stacked import EventList
 
 class Game:
     """ This class holds the logic to make a new game. """

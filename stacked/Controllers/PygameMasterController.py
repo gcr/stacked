@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-import ..EventList
+from stacked import EventList
 import pygame
 
 class PygameMasterController:
