@@ -30,11 +30,11 @@ class FPSDebugController(DisplayTimeController):
         to the console every second
     """
     def __init__(self, event_manager):
-        TimeController.__init__(self, event_manager)
+        DisplayTimeController.__init__(self, event_manager)
         self.counter = pygame.time.get_ticks()
         
     def tick(self):
-        TimeController.tick(self)
+        DisplayTimeController.tick(self)
         now = pygame.time.get_ticks()
         if now - self.counter > 1000:
             print(self.clock.get_fps())

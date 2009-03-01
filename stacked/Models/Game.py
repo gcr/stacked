@@ -16,5 +16,5 @@ class Game:
         self.ev.register_listener(EventList.NewGame, self)
         
     def notify(self, event):
-        if isinstance(event, EventList.NewGame)):
+        if isinstance(event, EventList.NewGame):
             self.map = event.map

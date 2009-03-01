@@ -6,7 +6,7 @@ class Map:
     """
         This holds a map, full of rooms and dreadful monsters, etc.
     """
-    def __init__(self, name):
+    def __init__(self):
         """
             Loads the map with the name name.
         """

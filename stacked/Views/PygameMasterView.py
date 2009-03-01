@@ -61,6 +61,17 @@ class PygameMasterView:
         pygame.display.update()
         
         
+    def updatescreen(self):
+        """
+            Updates the screen every frame
+        """
+        changed_rects = []
+        for view in self.current_views:
+            changed_rects.extend( view.update() )
+            self.window.blit(view.image, (0,0))
+            
+        pygame.display.update(changed_rects)
+        
     def changescreen(self, new_screen):
         """
             This changes what subviews we draw to the screen.
@@ -73,8 +84,8 @@ class PygameMasterView:
         self.current_views = []
         
         # In with the new
-        for newview in self.view_classes[new_screen]:
-            self.current_views.append(newView())
+        for new_view in self.view_classes[new_screen]:
+            self.current_views.append(new_view(self.resolution))
     
     
     def notify(self, event):
@@ -84,7 +95,10 @@ class PygameMasterView:
         if isinstance(event, EventList.Quit):
             pygame.quit()
             sys.exit()
-        elif isinstance(EventList.NewGame):
+        elif isinstance(event, EventList.NewGame):
             # Change the screen
             self.changescreen('game')
+        elif isinstance(event, EventList.DisplayUpdate):
+            # Update the display
+            self.updatescreen()
     
