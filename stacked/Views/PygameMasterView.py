@@ -64,5 +64,7 @@ class PygameMasterView:
         if isinstance(event, EventList.Quit):
             pygame.quit()
             sys.exit()
-    
+        elif isinstance(EventList.NewGame):
+            # Change the screen
+            self.changescreen('game')
     

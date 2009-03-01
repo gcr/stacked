@@ -13,7 +13,8 @@ class PygameMasterController:
             and posts events of our own to our event manager.
         """
         self.ev = eventManager
-        self.ev.register_listener(EventList.Tick, self)
+        for event in [EventList.Tick]:
+            self.ev.register_listener(event, self)
         
     def notify(self, event):
         if isinstance(event, EventList.Tick):
