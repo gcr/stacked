@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 import pygame
+import pprint
 
 class Map:
     """
@@ -16,7 +17,7 @@ class Map:
         # just a single room for now
         self.rooms = [Room()]
         
-class Room ():
+class Room:
     """
         A room from a map. Each map has a list of these.
     """
@@ -26,19 +27,35 @@ class Room ():
             Makes a new room
         """
         # we don'w know how to make a room, so we'll just improv.
-        self.width = 32
-        self.height = 25
+        self.width = 3
+        self.height = 5
         # Tiles - tiles[row][colum] - makes the map
         # be stored sideways. WHO CARES? As long as you use
         # this map class, you'll be fine.
-        self.bg = [[]]
-        self.fg = [[]] # More tiles
-        self.cl = [[]] # Even more tiles
+        self.bg = []
+        self.fg = [] # More tiles
+        self.cl = [] # Even more tiles
         self.layers = [self.bg, self.cl, self.fg]
         
         # Fill the layers with empty tiles
         for layer in self.layers:
             self.fillempty(layer)
+        
+        
+        pprint.pprint(self.cl)
+        # Make a little border around the collidelayers
+        # Left wall
+        self.cl[0] = [Tile() for x in self.cl[0]]
+        # Right wall
+        self.cl[-1] = [Tile() for x in self.cl[-1]]
+        # Top wall
+        for colum in self.cl:
+            colum[0] = Tile()
+        # Bottom wall
+        for colum in self.cl:
+            colum[-1] = Tile()
+        
+        pprint.pprint(self.cl)
         
     def fillempty(self, layer):
         """
@@ -58,6 +75,7 @@ class Tile():
     """
     def __init__(self):
         self.texture = pygame.Surface((32, 32))
+        self.texture.fill((255,0,0))
 
 
 if __name__ == '__main__':
