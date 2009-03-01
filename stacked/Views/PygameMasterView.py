@@ -4,7 +4,7 @@
 
 import pygame
 from stacked import EventList
-from stacked import ResourceManager
+import ResourceManager
 import sys
 
 class PygameMasterView:
