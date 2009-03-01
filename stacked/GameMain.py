@@ -9,6 +9,8 @@ from stacked.Controllers.PygameMasterController import PygameMasterController
 
 from stacked.Controllers import TimeKeepers
 from stacked.Models.Game import Game
+from stacked.Models.Map import Map
+from stacked.EventList import EventList
 
 def run():
     ev = EventManager() # Keep track of it all
@@ -17,6 +19,7 @@ def run():
     pycont = PygameMasterController(ev) # Get it all
     pyview = PygameMasterView(ev) # Draw it all
     
+    ev.post(EventList.NewGame(Map())
     while 1:
         timer.tick()
     

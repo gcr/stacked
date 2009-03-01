@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 import pygame
-import pprint
 
 class Map:
     """
@@ -21,7 +20,6 @@ class Room:
     """
         A room from a map. Each map has a list of these.
     """
-    
     def __init__(self):
         """
             Makes a new room
@@ -36,13 +34,11 @@ class Room:
         self.fg = [] # More tiles
         self.cl = [] # Even more tiles
         self.layers = [self.bg, self.cl, self.fg]
-        
         # Fill the layers with empty tiles
         for layer in self.layers:
             self.fillempty(layer)
         
         
-        pprint.pprint(self.cl)
         # Make a little border around the collidelayers
         # Left wall
         self.cl[0] = [Tile() for x in self.cl[0]]
@@ -55,7 +51,6 @@ class Room:
         for colum in self.cl:
             colum[-1] = Tile()
         
-        pprint.pprint(self.cl)
         
     def fillempty(self, layer):
         """

@@ -2,7 +2,9 @@ h1. Stacked
 
 ??Stacked?? will be an experimental platform game once I get around to completing it. It'll be a lot like your average ??Metroid??' or ??Vectorman??, but the thing that'll set it out will be the ability to combine two or more powerups.
 
-Here's the list I have so far. Feel free to comment.
+For a list of every source file, see the file called @@manifest@@.
+
+Here's the list of powerup combos I have so far. Feel free to comment.
 
 |_. Combinations|_. &nbsp; |_. &nbsp; |_. Effect|
 |Nothing|&nbsp; |&nbsp; |boring ol' "Pew Pew Pew" pistol|

@@ -4,8 +4,10 @@
 
 import pygame
 from stacked import EventList
+from stacked.Views.MapRenderer import MapRenderer
 import ResourceManager
 import sys
+
 
 class PygameMasterView:
     def __init__(self, event_manager):
@@ -27,10 +29,12 @@ class PygameMasterView:
         # through each of the layers and call its update() function,
         # then blit
         # all their surface rects together.
-        self.layers = []
-        self.views = {'main_menu': [],
-            'game': [],
-            'options': []}
+        self.current_views = []
+        self.view_classes = {
+            'main_menu': [],
+            'game': [MapRenderer],
+            'options': []
+        }
         
         # Step 2. Draw stuff to the screen
         pygame.display.set_caption("Stacked")
@@ -57,6 +61,22 @@ class PygameMasterView:
         pygame.display.update()
         
         
+    def changescreen(self, new_screen):
+        """
+            This changes what subviews we draw to the screen.
+            e.g. self.changescreen('game') will give us a map renderer,
+            a HUD, etc.
+        """
+        # Empty out the old
+        for view in self.current_views:
+            del view
+        self.current_views = []
+        
+        # In with the new
+        for newview in self.view_classes[new_screen]:
+            self.current_views.append(newView())
+    
+    
     def notify(self, event):
         """
             Handle events from the event manager

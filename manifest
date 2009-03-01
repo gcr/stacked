@@ -1,0 +1,42 @@
+List of every file:
+
+Kickstart.py
+    Simply starts stacked/GameMain.py.
+
+EventList.py
+    Contains every event object we can send
+
+EventManager.py
+    Every class registers with this so they know what's happening.
+
+GameMain.py
+    Sets up the Pygame view, the Game, and shows the main menu to get
+    things goin'.
+    
+    
+Models: -----------
+    Game.py
+        Handles all the game logic. When you win, when you lose, etc.
+
+    Map.py
+        Contains the Map objects, the Room objects, the Tile objects, etc.
+        
+        
+Views: ------------
+    MapRenderer.py
+        Contains a map renderer that renders all the map tiles and objects
+        to a Pygame surface
+        
+    ResourceManager.py
+        Loads images and sounds.
+        
+        
+Controllers: ------
+    PygameMainController.py
+        Handles input from the keyboard and other events (like quit events)
+        
+    TimeKeepers.py
+        Contains a couple time keepin' clocks to send out Tick events
+        every so often
+        
+        
