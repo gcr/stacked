@@ -3,40 +3,71 @@
 import pygame
 from stacked.Models.Map import Map
 import random
+from stacked import EventList
 
 class PGView:
     """
         A generic pygame view
     """
-    def __init__(self, resolution):
+    def __init__(self, event_manager, resolution):
         self.image = pygame.surface.Surface(resolution)
         self.resolution = resolution
+        self.ev = event_manager
+        
     def update(self):
         """
             Updates the screen
         """
+        pass
+    
+    def notify(self, event):
         pass
         
 class MapRenderer(PGView):
     """
         This renders a map every so often. Whoo!
     """
-    def __init__(self, resolution):
-        PGView.__init__(self, resolution)
-        self.map = Map()
+    def __init__(self, ev, resolution):
+        PGView.__init__(self, ev, resolution)
+        self.map = None
+        self.room = None
         self.camera = Camera()
+        for event in [
+            EventList.MapLoaded
+        ]:
+            ev.register_listener(event, self)
         
     def update(self):
         """
             Updates the screen, returns a list of rects that changed.
         """
-        self.image.fill([
-            random.randint(0,255),
-            random.randint(0,255),
-            random.randint(0,255)
-        ])
-        return [pygame.rect.Rect((0,0), self.resolution)]
+        if self.map is not None:
+            self.image.fill([
+                random.randint(0,255),
+                random.randint(0,255),
+                random.randint(0,255)
+            ])
+            return [pygame.rect.Rect((0,0), self.resolution)]
+        else:
+            # self.map is None
+            return [pygame.rect.Rect(0,0,0,0)]
         
+        
+    def trackmap(self, newmap):
+        """
+            We'll now render this new map.
+        """
+        self.map = newmap
+        self.room = self.map.rooms[0]
+        
+        
+    def notify(self, event):
+        """
+            Handle events
+        """
+        if isinstance(event, EventList.MapLoaded):
+            self.trackmap(event.map)
+            
         
 class Camera:
     """

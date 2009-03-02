@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-
 import pygame
 from stacked import EventList
 from stacked.Views.MapRenderer import MapRenderer
@@ -61,7 +60,7 @@ class PygameMasterView:
         pygame.display.update()
         
         
-    def updatescreen(self):
+    def update_display(self):
         """
             Updates the screen every frame
         """
@@ -72,7 +71,7 @@ class PygameMasterView:
             
         pygame.display.update(changed_rects)
         
-    def changescreen(self, new_screen):
+    def change_screen(self, new_screen):
         """
             This changes what subviews we draw to the screen.
             e.g. self.changescreen('game') will give us a map renderer,
@@ -85,7 +84,7 @@ class PygameMasterView:
         
         # In with the new
         for new_view in self.view_classes[new_screen]:
-            self.current_views.append(new_view(self.resolution))
+            self.current_views.append(new_view(self.ev, self.resolution))
     
     
     def notify(self, event):
@@ -97,8 +96,8 @@ class PygameMasterView:
             sys.exit()
         elif isinstance(event, EventList.NewGame):
             # Change the screen
-            self.changescreen('game')
+            self.change_screen('game')
         elif isinstance(event, EventList.DisplayUpdate):
             # Update the display
-            self.updatescreen()
+            self.update_display()
     

@@ -14,7 +14,7 @@ class Map:
         self.theme = 'arctic'
         self.title = 'Loading Map'
         # just a single room for now
-        self.rooms = [Room()]
+        self.rooms = []
         
 class Room:
     """
@@ -24,7 +24,6 @@ class Room:
         """
             Makes a new room
         """
-        # we don'w know how to make a room, so we'll just improv.
         self.width = 3
         self.height = 5
         # Tiles - tiles[row][colum] - makes the map
@@ -34,6 +33,7 @@ class Room:
         self.fg = [] # More tiles
         self.cl = [] # Even more tiles
         self.layers = [self.bg, self.cl, self.fg]
+        
         # Fill the layers with empty tiles
         for layer in self.layers:
             self.fillempty(layer)

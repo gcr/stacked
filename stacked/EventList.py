@@ -33,12 +33,16 @@ class NewGame(Event):
         jump into action and load a new map.
     """
     TYPE = 4
-    def __init__(self, map):
-        self.map = map
         
 class Quit (Event):
     """ When the user gets bored and wants to leave """
     TYPE = 5
+    
+class MapLoaded(Event):
+    """ When the user loads a new map """
+    TYPE = 6
+    def  __init__(self, map):
+        self.map = map
 
 
 
