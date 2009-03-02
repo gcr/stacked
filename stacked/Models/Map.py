@@ -14,7 +14,7 @@ class Map:
         self.theme = 'arctic'
         self.title = 'Loading Map'
         # just a single room for now
-        self.rooms = []
+        self.rooms = [Room()]
         
 class Room:
     """
