@@ -10,17 +10,18 @@ class DisplayTimeController:
         Fires off a tick event every frame and then a display update
         event afterwards.
     """
-    def __init__(self, event_manager):
+    def __init__(self, event_manager, fps):
         """ This makes a new timer that fires a TickEvent every frame. """
         self.clock = pygame.time.Clock()
         self.ev = event_manager
+        self.fps = fps
         
     def tick(self):
         """
             Fires a tick event then a display update event
             60 times a second.
         """
-        self.clock.tick(60)
+        self.clock.tick(self.fps)
         self.ev.post(EventList.Tick())
         self.ev.post(EventList.DisplayUpdate())
         
@@ -29,8 +30,8 @@ class FPSDebugController(DisplayTimeController):
         Does the same thing as above, only this also displays the FPS
         to the console every second
     """
-    def __init__(self, event_manager):
-        DisplayTimeController.__init__(self, event_manager)
+    def __init__(self, event_manager, fps):
+        DisplayTimeController.__init__(self, event_manager, fps)
         self.counter = pygame.time.get_ticks()
         
     def tick(self):

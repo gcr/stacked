@@ -27,7 +27,16 @@ class PygameMasterController:
                 if pyevent.type == pygame.QUIT:
                     # User wants to go
                     self.ev.post(EventList.Quit())
-        
+                elif pyevent.type == pygame.KEYDOWN:
+                    # User pressed a key
+                    if pyevent.key == pygame.K_DOWN:
+                        self.ev.post(EventList.CameraMove(0, 5))
+                    elif pyevent.key == pygame.K_UP:
+                        self.ev.post(EventList.CameraMove(0, -5))
+                    elif pyevent.key == pygame.K_LEFT:
+                        self.ev.post(EventList.CameraMove(-5, 0))
+                    elif pyevent.key == pygame.K_RIGHT:
+                        self.ev.post(EventList.CameraMove(5, 0))
 if __name__ == '__main__':
     print("lolwut?")
 

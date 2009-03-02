@@ -15,7 +15,7 @@ from stacked import EventList
 def run():
     ev = EventManager() # Keep track of it all
     #timer = TimeKeepers.DisplayTimeController(ev) # Time it all
-    timer = TimeKeepers.FPSDebugController(ev) # Time it all
+    timer = TimeKeepers.FPSDebugController(ev, 60) # Time it all
     game = Game(ev) # Control it all
     pycont = PygameMasterController(ev) # Get it all
     pyview = PygameMasterView(ev) # Draw it all

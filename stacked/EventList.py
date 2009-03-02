@@ -44,7 +44,12 @@ class MapLoaded(Event):
     def  __init__(self, map):
         self.map = map
 
-
+class CameraMove(Event):
+    """ DEBUG: The camera moved! """
+    TYPE = 7
+    def __init__(self, left, top):
+        self.left = left
+        self.top = top
 
 if __name__ == '__main__':
     print("that was unexpected")

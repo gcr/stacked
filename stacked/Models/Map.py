@@ -69,8 +69,8 @@ class Tile():
         This contains a tile.
     """
     def __init__(self):
-        self.texture = pygame.Surface((32, 32))
-        self.texture.fill((255,0,0))
+        self.image = pygame.Surface((32, 32))
+        self.image.fill((255,0,0))
 
 
 if __name__ == '__main__':
