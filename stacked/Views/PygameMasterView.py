@@ -3,7 +3,7 @@
 
 import pygame
 from stacked import EventList
-from stacked.Views.MapRenderer import MapRenderer
+from stacked.Views.MapRenderer import MapRenderer, SolidBlack
 import ResourceManager
 import sys
 
@@ -31,7 +31,7 @@ class PygameMasterView:
         self.current_views = []
         self.view_classes = {
             'main_menu': [],
-            'game': [MapRenderer],
+            'game': [SolidBlack, MapRenderer],
             'options': []
         }
         
@@ -64,12 +64,13 @@ class PygameMasterView:
         """
             Updates the screen every frame
         """
-        changed_rects = []
+        #changed_rects = []
         for view in self.current_views:
-            changed_rects.extend( view.update() )
+            #changed_rects.extend( view.update() )
+            view.update()
             self.window.blit(view.image, (0,0))
             
-        pygame.display.update(changed_rects)
+        pygame.display.update()
         
     def change_screen(self, new_screen):
         """

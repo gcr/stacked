@@ -22,6 +22,12 @@ class PGView:
     
     def notify(self, event):
         pass
+    
+class SolidBlack(PGView):
+    def __init__(self, event_manager, resolution):
+        print "I got called anyway"
+        PGView.__init__(self, event_manager, resolution)
+        self.image.fill((0,0,0))
         
 class MapRenderer(PGView):
     """
@@ -45,7 +51,7 @@ class MapRenderer(PGView):
         """
         if self.map is not None:
             # TODO: Optimize this so only those rects that changed are drawn.
-            self.image.fill((255,255,255))
+            self.image.fill(self.colorkey)
             dirty_rects = []
             left = self.camera.rect.left / 32 # Leftmost tile
             top = self.camera.rect.top / 32 # Top tile
@@ -54,7 +60,7 @@ class MapRenderer(PGView):
             mod_left = self.camera.rect.left % 32 # Offset
             mod_top = self.camera.rect.top % 32 # Offset
             
-            for layer in [self.room.layers[1]]:
+            for layer in self.room.layers:
                 cur_x = 0 - mod_left
                 cur_y = 0 - mod_top
                 for colum in layer[left:right]:
@@ -99,9 +105,12 @@ class Camera:
         self.rect = pygame.rect.Rect((0,0), size)
         self.ev = event_manager
         self.ev.register_listener(EventList.CameraMove, self)
+        self.ev.register_listener(EventList.Tick, self)
         
     def notify(self, event):
-        if isinstance(event, EventList.CameraMove):
+        if isinstance(event, EventList.Tick):
+            self.rect.move_ip(0, 1)
+        elif isinstance(event, EventList.CameraMove):
             self.rect.move_ip(event.left, event.top)
         
     

@@ -25,7 +25,7 @@ class Room:
             Makes a new room
         """
         self.width = 32
-        self.height = 25
+        self.height = 96
         # Tiles - tiles[row][colum] - makes the map
         # be stored sideways. WHO CARES? As long as you use
         # this map class, you'll be fine.
@@ -50,6 +50,11 @@ class Room:
         # Bottom wall
         for colum in self.cl:
             colum[-1] = Tile()
+            
+        # Stripes!
+        for colum in self.cl:
+            colum[::2] = [Tile() for x in colum[::2]]
+                
         
         
     def fillempty(self, layer):
