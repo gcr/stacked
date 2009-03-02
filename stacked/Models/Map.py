@@ -76,6 +76,8 @@ class Tile():
     def __init__(self):
         self.image = pygame.Surface((32, 32))
         self.image.fill((255,0,0))
+        self.image.set_alpha(255, pygame.RLEACCEL)
+        self.image = self.image.convert()
 
 
 if __name__ == '__main__':

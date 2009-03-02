@@ -109,7 +109,7 @@ class Camera:
         
     def notify(self, event):
         if isinstance(event, EventList.Tick):
-            self.rect.move_ip(0, 1)
+            self.rect.move_ip(0, 3)
         elif isinstance(event, EventList.CameraMove):
             self.rect.move_ip(event.left, event.top)
         

@@ -5,6 +5,7 @@ import cProfile, pstats
 import sys
 import stacked.GameMain
 
+
 if "-p" in sys.argv:
     cProfile.run('stacked.GameMain.run()', '/tmp/profile')
     p = pstats.Stats('/tmp/profile')
