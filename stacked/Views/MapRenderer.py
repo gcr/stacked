@@ -84,6 +84,8 @@ class MapRenderer(PGView):
                         layer[row][colum].image = rabbyt.Sprite('img/newtile.png')
                         layer[row][colum].image.left = colum * 32
                         layer[row][colum].image.bottom = row * 32
+        print self.room.cl[0][0].image.bottom
+        print self.room.cl[0][0].image.top
         
     def notify(self, event):
         """
@@ -105,7 +107,7 @@ class Camera:
         
     def notify(self, event):
         if isinstance(event, EventList.Tick):
-            self.rect.move_ip(1, 3)
+            self.rect.move_ip(3, 3)
         elif isinstance(event, EventList.CameraMove):
             self.rect.move_ip(event.left, event.top)
         
