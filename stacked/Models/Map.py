@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 import pygame
+import rabbyt
 
 class Map:
     """
@@ -24,7 +25,7 @@ class Room:
         """
             Makes a new room
         """
-        self.width = 32
+        self.width = 95
         self.height = 96
         # Tiles - tiles[row][colum] - makes the map
         # be stored sideways. WHO CARES? As long as you use
@@ -40,20 +41,22 @@ class Room:
         
         
         # Make a little border around the collidelayers
-        # Left wall
-        self.cl[0] = [Tile() for x in self.cl[0]]
-        # Right wall
-        self.cl[-1] = [Tile() for x in self.cl[-1]]
         # Top wall
+        self.cl[0] = [Tile() for x in self.cl[0]]
+        # Bottom wall
+        self.cl[-1] = [Tile() for x in self.cl[-1]]
+        # Left wall
         for colum in self.cl:
             colum[0] = Tile()
-        # Bottom wall
+        # Right wall
         for colum in self.cl:
             colum[-1] = Tile()
             
-        # Stripes!
+        # HStripes!
         for colum in self.cl:
             colum[::2] = [Tile() for x in colum[::2]]
+        # VStripes!
+        self.cl[::2] = [[Tile() for y in row] for row in self.cl[::2]]
                 
         
         
@@ -74,10 +77,7 @@ class Tile():
         This contains a tile.
     """
     def __init__(self):
-        self.image = pygame.Surface((32, 32))
-        self.image.fill((255,0,0))
-        self.image.set_alpha(255, pygame.RLEACCEL)
-        self.image = self.image.convert()
+        self.image = rabbyt.Sprite('img/newtile.png')
 
 
 if __name__ == '__main__':

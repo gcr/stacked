@@ -2,8 +2,9 @@
 #-*- coding:utf-8 -*-
 
 import pygame
+import rabbyt
 from stacked import EventList
-from stacked.Views.MapRenderer import MapRenderer, SolidBlack
+from stacked.Views.MapRenderer import MapRenderer, SpriteTest
 import ResourceManager
 import sys
 
@@ -19,7 +20,9 @@ class PygameMasterView:
         # Step 1.
         self.resolution = (800,600)
         self.ev = event_manager
-        self.window = pygame.display.set_mode(self.resolution)
+        rabbyt.init_display(self.resolution)
+        rabbyt.set_viewport((0,0,self.resolution[0], self.resolution[1]),
+            (0, 0, self.resolution[0], self.resolution[1]))
         # These "views" are different states the display can be in
         # the game.
         # When we switch views through events, all the layers get cleared
@@ -31,13 +34,13 @@ class PygameMasterView:
         self.current_views = []
         self.view_classes = {
             'main_menu': [],
-            'game': [SolidBlack, MapRenderer],
+            'game': [MapRenderer],
             'options': []
         }
         
         # Step 2. Draw stuff to the screen
         pygame.display.set_caption("Stacked")
-        self.draw_loading_screen()
+        #self.draw_loading_screen()
         
         # Step 3. Event Manager.
         for e in [EventList.DisplayUpdate,
@@ -50,6 +53,7 @@ class PygameMasterView:
         """
             Draws a nifty loading page to the screen
         """
+        #TODO: BROKEN ! ! ! ! !
         self.window.fill((0,0,0))
         loading_pic = ResourceManager.load_ui_image("loading")
         loading_pic_rect = loading_pic.get_rect()
@@ -64,13 +68,13 @@ class PygameMasterView:
         """
             Updates the screen every frame
         """
+        rabbyt.clear((0,0,0))
         #changed_rects = []
         for view in self.current_views:
             #changed_rects.extend( view.update() )
             view.update()
-            self.window.blit(view.image, (0,0))
+        pygame.display.flip()
             
-        pygame.display.update()
         
     def change_screen(self, new_screen):
         """
