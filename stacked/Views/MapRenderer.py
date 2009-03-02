@@ -31,7 +31,9 @@ class MapRenderer(PGView):
         PGView.__init__(self, ev, resolution)
         self.map = None
         self.room = None
-        self.camera = Camera()
+        self.camera = Camera(resolution)
+        self.image.set_colorkey((255,0,255))
+        
         for event in [
             EventList.MapLoaded
         ]:
@@ -42,11 +44,9 @@ class MapRenderer(PGView):
             Updates the screen, returns a list of rects that changed.
         """
         if self.map is not None:
-            self.image.fill([
-                random.randint(0,255),
-                random.randint(0,255),
-                random.randint(0,255)
-            ])
+            # TODO: Optimize this so only those rects that changed are drawn.
+            self.image.fill(self.image.get_colorkey())
+            
             return [pygame.rect.Rect((0,0), self.resolution)]
         else:
             # self.map is None
@@ -73,7 +73,7 @@ class Camera:
     """
         This handles the camera object stuff.
     """
-    def __init__(self):
-        self.rect = []
+    def __init__(self, size):
+        self.rect = pygame.rect.Rect((0,0), size)
         
     

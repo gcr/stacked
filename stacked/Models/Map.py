@@ -24,8 +24,8 @@ class Room:
         """
             Makes a new room
         """
-        self.width = 3
-        self.height = 5
+        self.width = 32
+        self.height = 25
         # Tiles - tiles[row][colum] - makes the map
         # be stored sideways. WHO CARES? As long as you use
         # this map class, you'll be fine.
