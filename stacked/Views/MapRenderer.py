@@ -3,6 +3,7 @@
 import pygame
 from stacked.Models.Map import Map
 from OpenGL.GL import *
+import OpenGL.GL
 import random
 from stacked import EventList
 
@@ -44,13 +45,14 @@ class MapRenderer(PGView):
             Updates the screen, returns a list of rects that changed.
         """
         if self.map is not None:
+            gl = OpenGL.GL
             # Set up the viewport
-            glPushMatrix()
-            glLoadIdentity()
-            glTranslate(-self.camera.left, -self.camera.top, 0)
-            glCallList(self.dlist)
-               
-            glPopMatrix()     
+            gl.glPushMatrix()
+            gl.glLoadIdentity()
+            gl.glTranslate(-self.camera.left, -self.camera.top, 0)
+            gl.glCallList(self.dlist)
+            
+            gl.glPopMatrix()     
             #return [pygame.rect.Rect((0,0), self.resolution)]
             #return dirty_rects
         else:
