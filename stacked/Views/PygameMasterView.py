@@ -2,9 +2,9 @@
 #-*- coding:utf-8 -*-
 
 import pygame
-import rabbyt
+from OpenGL.GL import *
 from stacked import EventList
-from stacked.Views.MapRenderer import MapRenderer, SpriteTest
+from stacked.Views.MapRenderer import MapRenderer
 import ResourceManager
 import sys
 
@@ -20,9 +20,18 @@ class PygameMasterView:
         # Step 1.
         self.resolution = (800,600)
         self.ev = event_manager
-        rabbyt.init_display(self.resolution)
-        rabbyt.set_viewport((0,0,self.resolution[0], self.resolution[1]),
-            (0, 0, self.resolution[0], self.resolution[1]))
+        self.window = pygame.display.set_mode(self.resolution, 
+            pygame.OPENGL | pygame.DOUBLEBUF)
+        # Set up OpenGL
+        glMatrixMode(GL_PROJECTION)
+        glLoadIdentity()
+        glOrtho (0, self.resolution[0], self.resolution[1], 0, 0, 1)
+        glMatrixMode(GL_MODELVIEW)
+        glLoadIdentity()
+        glDisable(GL_DEPTH_TEST)
+        glClearColor(0.,0.,0.,1.)
+        glTranslate(0.375,0.375,0.) # Trick for pixel precision
+        
         # These "views" are different states the display can be in
         # the game.
         # When we switch views through events, all the layers get cleared
@@ -68,8 +77,9 @@ class PygameMasterView:
         """
             Updates the screen every frame
         """
-        rabbyt.clear((0,0,0))
+        glClear(GL_COLOR_BUFFER_BIT)
         #changed_rects = []
+        glLoadIdentity()
         for view in self.current_views:
             #changed_rects.extend( view.update() )
             view.update()
