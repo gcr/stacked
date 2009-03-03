@@ -66,7 +66,18 @@ class MapRenderer(PGView):
         self.map = newmap
         self.room = self.map.rooms[0]
         
-        # New display list
+        # New display list- Just a tile
+        self.tlist = glGenLists(1)
+        glNewList(self.tlist, GL_COMPILE)
+        glBegin(GL_QUADS)
+        glVertex(0,0)
+        glVertex(32,0)
+        glVertex(32,32)
+        glVertex(0,32)
+        glEnd()
+        glEndList()
+        
+        # New display list - Entire map!
         self.dlist = glGenLists(1)
         glNewList(self.dlist, GL_COMPILE)
         glPushMatrix()
@@ -74,12 +85,7 @@ class MapRenderer(PGView):
             for row in xrange(len(layer)):
                 for colum in xrange(len(layer[row])):
                     if layer[row][colum] is not None:
-                        glBegin(GL_QUADS)
-                        glVertex(0,0)
-                        glVertex(32,0)
-                        glVertex(32,32)
-                        glVertex(0,32)
-                        glEnd()
+                        glCallList(self.tlist)
                     glTranslate(32,0,0)
                 # New row, move down
                 glTranslate(-32*(colum+1),32,0)
