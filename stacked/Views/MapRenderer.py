@@ -22,6 +22,8 @@ class PGView:
     
     def notify(self, event):
         pass
+    
+    
         
 class MapRenderer(PGView):
     """
@@ -33,7 +35,7 @@ class MapRenderer(PGView):
         self.room = None
         self.resolution = resolution
         self.camera = pygame.rect.Rect((0,0), self.resolution)
-        self.dlist = 0
+        self.layerlist = []
         for event in [
             EventList.MapLoaded,
             EventList.Tick
@@ -48,9 +50,9 @@ class MapRenderer(PGView):
             gl = OpenGL.GL
             # Set up the viewport
             gl.glPushMatrix()
-            gl.glLoadIdentity()
             gl.glTranslate(-self.camera.left, -self.camera.top, 0)
-            gl.glCallList(self.dlist)
+            for dlist in self.layerlist:
+                gl.glCallList(dlist)
             
             gl.glPopMatrix()     
             #return [pygame.rect.Rect((0,0), self.resolution)]
@@ -80,10 +82,12 @@ class MapRenderer(PGView):
         glEndList()
         
         # New display list - Entire map!
-        self.dlist = glGenLists(1)
-        glNewList(self.dlist, GL_COMPILE)
-        glPushMatrix()
-        for layer in [self.room.cl]:
+        for layer in self.room.layers:
+            # Make a new list and store it in our layers
+            newlayer = glGenLists(1)
+            self.layerlist.append(newlayer)
+            glNewList(newlayer, GL_COMPILE)
+            glPushMatrix()
             for row in xrange(len(layer)):
                 for colum in xrange(len(layer[row])):
                     if layer[row][colum] is not None:
@@ -91,9 +95,9 @@ class MapRenderer(PGView):
                     glTranslate(32,0,0)
                 # New row, move down
                 glTranslate(-32*(colum+1),32,0)
-        glPopMatrix()
-        glEndList()
-        print "DList done"
+            glPopMatrix()
+            glEndList()
+        print "DLists done"
 #        for layer in self.room.layers:
 #            for row in xrange(len(layer)):
 #                for colum in xrange(len(layer[row])):
